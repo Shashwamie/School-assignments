@@ -26,14 +26,14 @@ int main()
 
     // Get the file we will be reading;
     cout << "Please enter the name of a file you would like to decorate: " << endl;
-    //getline(cin, inputFileName);
-    inputFileName = "decorator.dat";
+    getline(cin, inputFileName);
     cout << endl;
 
     // Open file that we are reading and open file to write too
     ifstream inFile(inputFileName);
     ofstream outFile("OutputData.dat");
-    ofstream teeFile("teeOutputData.dat");
+    string teeFileName = "";
+    ofstream teeOutFile;
 
     if (inFile.is_open())
     {
@@ -58,19 +58,60 @@ int main()
             if(tolower(decorationType.at(0)) == 'b'|| decorationType == "1"){
                 // adding the bracket decorator to the stream
                 outputStream = new BracketOutput<string>(outputStream);
+                cout << "Brackets applied\n" << endl;
             }
             if(tolower(decorationType.at(0)) == 'n'|| decorationType == "2"){
                 // adding the number decorator to the stream
                 outputStream = new NumberedOutput<string>(outputStream);
+                cout << "Numbers applied\n" << endl;
             }
             if(tolower(decorationType.at(0)) == 't'|| decorationType == "3"){
-                // adding the Tee decorator to the stream
-                outputStream = new TeeOutput<string>(outputStream, teeFile);
+                // check if files already created
+                if (teeFileName == "")
+                {
+                    cout << "Please provide a file name to write to (with file extension): " << endl;
+                    getline(std::cin, teeFileName);
+                    cout << endl;
+
+                    teeOutFile.open(teeFileName);
+                    if (teeOutFile.is_open())
+                    {
+                        // adding the Tee decorator to the stream
+                        outputStream = new TeeOutput<string>(outputStream, teeOutFile);
+                        cout << "Created tee file named: " << teeFileName << endl;
+                        cout << endl;
+                    }
+                }
+                else{
+                    // when file is already made
+                    cout << "Already created Tee file named: " << teeFileName << endl;
+                    cout << endl;
+                }      
             }
             if(tolower(decorationType.at(0)) == 'f'|| decorationType == "4"){
-                // adding the Filter decorator to the stream
-                outputStream = new FilterOutput<string>(outputStream);
+                string selection = "";
+
+                cout << "What filter do you want? (enter number)" << endl;
+                cout << "1. Line contains digit" << endl;
+                cout << "2. Line contains asperand (@)" << endl;
+                cout << "3. Line contains octothorpe (#)" << endl;
+                cout << "4. Line contains less than 50 characters" << endl;
+                cout << "5. Line references the word \"python\"" << endl;
+                getline(cin, selection);
+                cout << endl;
+
+                if (selection == "1" || selection == "2" || selection == "3" || selection == "4" || selection == "5")
+                {
+                    // adding the Filter decorator to the stream
+                    outputStream = new FilterOutput<string>(outputStream, selection);
+                    cout << "Filter Applied\n" << endl;
+                }
+                else{
+                    cout << "Invalid selection" << endl;
+                }
             }
+
+            // keeps looping to add more decorators until exit
             if(tolower(decorationType.at(0)) == 'e'|| decorationType == "5"){
                 // assigning to exit
                 decorationType = "exit";
@@ -86,6 +127,7 @@ int main()
 
         inFile.close();
         outFile.close();
+        teeOutFile.close();
     }
     else{
         cout << "Can not open file!" << endl;
