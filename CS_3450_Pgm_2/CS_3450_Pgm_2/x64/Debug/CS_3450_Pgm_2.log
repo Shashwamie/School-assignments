@@ -1,0 +1,4 @@
+﻿  CS_3450_Pgm_2.cpp
+C:\Users\user\source\repos\CS_3450_Pgm_2\CS_3450_Pgm_2\CS_3450_Pgm_2.cpp(153,30): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\user\source\repos\CS_3450_Pgm_2\CS_3450_Pgm_2\CS_3450_Pgm_2.cpp(182,35): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  CS_3450_Pgm_2.vcxproj -> C:\Users\user\source\repos\CS_3450_Pgm_2\x64\Debug\CS_3450_Pgm_2.exe

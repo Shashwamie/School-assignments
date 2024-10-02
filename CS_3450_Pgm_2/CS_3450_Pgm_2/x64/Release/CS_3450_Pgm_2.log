@@ -1,0 +1,9 @@
+﻿  CS_3450_Pgm_2.cpp
+C:\Users\user\source\repos\CS_3450_Pgm_2\CS_3450_Pgm_2\CS_3450_Pgm_2.cpp(161,30): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\user\source\repos\CS_3450_Pgm_2\CS_3450_Pgm_2\CS_3450_Pgm_2.cpp(190,35): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  Generating code
+  2 of 827 functions ( 0.2%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    2 functions had inline decision re-evaluated but remain unchanged
+  Finished generating code
+  CS_3450_Pgm_2.vcxproj -> C:\Users\user\source\repos\CS_3450_Pgm_2\x64\Release\CS_3450_Pgm_2.exe
